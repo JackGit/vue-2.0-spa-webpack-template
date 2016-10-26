@@ -1,6 +1,6 @@
 var webpack = require('webpack')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var HtmlPlugin = require('html-webpack-plugin')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 var path = require('path')
 var utils = require('./utils')
 var config = require('../config')
@@ -92,17 +92,12 @@ module.exports = {
       $: 'jQuery' // when use $(), webpack will require('jQuery') from npm modules
     }),
     */
-    new webpack.optimize.DedupePlugin(),
     new ExtractTextPlugin('style.css'),
-    new HtmlPlugin({
+    new HtmlWebpackPlugin({
       title: 'App', // title is not working for template
       // filename: 'app.html', // default is index html, no matter what's the name of template file
       template: path.join(__dirname, '../src/index.html'),
       hash: false
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'vendor.js'
     })
   ]
 }
