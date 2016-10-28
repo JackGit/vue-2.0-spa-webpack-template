@@ -1,13 +1,15 @@
 <style lang="scss">
- $margin: 16px;
- div {
-   margin: $margin;
-   color: red;
- }
+  $backgroundColor: lightgrey;
+  body {
+    background-color: $backgroundColor;
+    font-family: arial;
+  }
 </style>
 
 <template>
-  <div>should be find</div>
+  <div>
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>

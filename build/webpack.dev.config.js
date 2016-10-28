@@ -1,5 +1,7 @@
 var webpack = require('webpack')
 var merge = require('webpack-merge')
+var path = require('path')
+var HtmlWebpackPlugin = require('html-webpack-plugin')
 var config = require('../config')
 var baseWebpackConfig = require('./webpack.base.config')
 
@@ -14,10 +16,11 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': config.dev.env
     }),
-    new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
+    new HtmlWebpackPlugin({
+      title: 'App', // title is not working for template
+      // filename: 'app.html', // default is index html, no matter what's the name of template file
+      template: path.join(__dirname, '../src/index.html'),
+      hash: false
     }),
     // https://github.com/glenjamin/webpack-hot-middleware#installation--usage
     new webpack.optimize.OccurenceOrderPlugin(),
