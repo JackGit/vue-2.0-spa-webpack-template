@@ -57,10 +57,12 @@ module.exports = {
       exclude: /node_modules/
     }, {
       test: /\.css$/,
-      loader: "css"
+      // loader: "css"
+      loader: ExtractTextPlugin.extract('css')
     }, {
       test: /\.scss$/,
-      loaders: ['css', 'sass']
+      // loaders: ['css', 'sass']
+      loader: ExtractTextPlugin.extract('css!sass')
     }, {
       test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
       loader: 'url',
